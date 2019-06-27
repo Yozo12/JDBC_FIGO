@@ -9,8 +9,11 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import it.objectmethod.springjdbc.main.dao.ICityDao;
 import it.objectmethod.springjdbc.main.model.City;
 import it.objectmethod.springjdbc.main.model.Country;
+import it.objectmethod.springjdbc.main.utils.Constants;
 
 public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICityDao {
+	Constants constant = new Constants();
+
 //	@Override
 //	public Country getCountryByCode(String code) {
 //		Country country = null;
@@ -78,16 +81,16 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 		List<City> CityDao = null;
 		String parametro = null;
 		String qry = "select t1.ID id, t1.Name cityName, t1.CountryCode  codNation, t1.Population population from city t1 JOIN country t2 ON t1.countrycode=t2.Code  where t1.CountryCode=:parCode ";
-		if (ord.equals("Alfabetico")) {
+		if (ord.equals(constant.getAZ())) {
 			parametro = "order by cityName ASC";
 			qry = qry + parametro;
-		} else if (ord.equals("Alfabetico Decrescente")) {
+		} else if (ord.equals(constant.getZA())) {
 			parametro = "order by cityName DESC";
 			qry = qry + parametro;
-		} else if (ord.equals("Popolazione Crescente")) {
+		} else if (ord.equals(constant.getPOPA())) {
 			parametro = " order by population ASC";
 			qry = qry + parametro;
-		} else if (ord.equals("Popolazione Decrescente")) {
+		} else if (ord.equals(constant.getPOPD())) {
 			parametro = " order by population DESC";
 			qry = qry + parametro;
 		}
