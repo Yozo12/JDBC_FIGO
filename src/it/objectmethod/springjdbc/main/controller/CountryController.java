@@ -15,23 +15,25 @@ import it.objectmethod.springjdbc.main.model.Country;
 public class CountryController {
 	@Autowired
 	private ICountryDao countryDaoImp;
-	
+
 	@RequestMapping("/continent")
-	public String differentContinent( ModelMap model) {
+	public String differentContinent(ModelMap model) {
 		List<String> ContinentList = countryDaoImp.getNameContinent();
 		model.addAttribute("continent", ContinentList);
 		return "continentList";
 	}
+
 	@RequestMapping("/{continent}/nazioni")
 	public String NazioniByContinent(@PathVariable("continent") String continent, ModelMap model) {
 		List<Country> nationList = countryDaoImp.getNazioniByContinent(continent);
 		model.addAttribute("nazioni", nationList);
 		return "nationList";
 	}
+
 	@RequestMapping("/allnazioni")
-	public String AllNation( ModelMap model) {
+	public String AllNation(ModelMap model) {
 		List<Country> ListNazioni = countryDaoImp.getAllNazioni();
-		model.addAttribute("nazioni",ListNazioni);
+		model.addAttribute("nazioni", ListNazioni);
 		return "menuAddCity";
 	}
 }

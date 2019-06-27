@@ -11,17 +11,13 @@
 </head>
 <body>
 	<form action="/SpringJDBC_FIGO/modifica-aggiungi">
-		NOME CITTA
-		<input name="newCity" type="text" value="${citta.cityName}"	
-			size="40" maxlength="200" />
-		<br> POPOLAZIONE
-		<input name="newPopulation" type="text" value="${citta.population}"
-			size="40" maxlength="200" />
-		<br> 
-		<input name="newCodNation" type="hidden" value="${citta.codNation} "
-			size="40" maxlength="200" />
-		<input name="id" type="hidden" value="${citta.id}" >
-		<input value="update" type="submit" > 
+		NOME CITTA <input name="newCity" type="text" value="${citta.cityName}"
+			size="40" maxlength="200" /> <br> POPOLAZIONE <input
+			name="newPopulation" type="text" value="${citta.population}"
+			size="40" maxlength="200" /> <br> <input name="newCodNation"
+			type="hidden" value="${citta.codNation} " size="40" maxlength="200" />
+		<input name="id" type="hidden" value="${citta.id}"> <input
+			value="update" type="submit">
 	</form>
 </body>
 </html>

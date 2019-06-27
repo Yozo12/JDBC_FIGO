@@ -41,35 +41,38 @@ public class CityController {
 		return "menuModCity";
 
 	}
+
 	@RequestMapping("/modifica-aggiungi")
 	public String modifica(@RequestParam("id") String id, @RequestParam("newPopulation") String newPopulation,
-			@RequestParam("newCodNation") String newCodNation, @RequestParam("newCity") String newCity){
-	   
-		if(id!="") {
-		CityDaoImp.modCity(newCity, newPopulation, newCodNation, id);
-		}else if(id==""){
+			@RequestParam("newCodNation") String newCodNation, @RequestParam("newCity") String newCity) {
+
+		if (id != "") {
+			CityDaoImp.modCity(newCity, newPopulation, newCodNation, id);
+		} else if (id == "") {
 			CityDaoImp.addCity(newCity, newPopulation, newCodNation);
 		}
-		return"redirect:" +newCodNation+ "/citta";
-}      
-	@RequestMapping ("/citta/ordina")
-public String ordina (@RequestParam ("codNazione") String codNazione, @RequestParam("ord")String ord,ModelMap model) {
-	String AZ="Alfabetico";
-	String POPA=null;
-	if (ord.equals("Alfabetico")){
-	 AZ="Alfabetico Decrescente";
-	}else {
-		AZ="Alfabetico";
+		return "redirect:" + newCodNation + "/citta";
 	}
-	if (ord.equals("Popolazione Crescente")) {
-		POPA="Popolazione Decrescente";
-	}else {
-		POPA="Popolazione Crescente";
+
+	@RequestMapping("/citta/ordina")
+	public String ordina(@RequestParam("codNazione") String codNazione, @RequestParam("ord") String ord,
+			ModelMap model) {
+		String AZ = "Alfabetico";
+		String POPA = null;
+		if (ord.equals("Alfabetico")) {
+			AZ = "Alfabetico Decrescente";
+		} else {
+			AZ = "Alfabetico";
+		}
+		if (ord.equals("Popolazione Crescente")) {
+			POPA = "Popolazione Decrescente";
+		} else {
+			POPA = "Popolazione Crescente";
+		}
+		List<City> cityList = CityDaoImp.getNameCitybyNationOrd(codNazione, ord);
+		model.addAttribute("citta", cityList);
+		model.addAttribute("AZ", AZ);
+		model.addAttribute("POPA", POPA);
+		return "cityList";
 	}
-	List<City> cityList = CityDaoImp.getNameCitybyNationOrd(codNazione, ord);
-	model.addAttribute("citta", cityList);
-	model.addAttribute("AZ", AZ);
-	model.addAttribute("POPA",POPA);
-	return"cityList";
-}
 }

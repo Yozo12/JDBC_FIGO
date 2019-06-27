@@ -8,9 +8,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 
 import it.objectmethod.springjdbc.main.dao.ICountryDao;
 import it.objectmethod.springjdbc.main.model.Country;
-import it.objectmethod.springjdbc.main.model.mapper.CountryMapper;
 
-public class CountryDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICountryDao{
+public class CountryDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICountryDao {
 //	@Override
 //	public Country getCountryByCode(String code) {
 //		Country country = null;
@@ -22,29 +21,31 @@ public class CountryDaoImpFigo extends NamedParameterJdbcDaoSupport implements I
 //		return country;
 //	}
 	@Override
-	public List <String> getNameContinent()  {
+	public List<String> getNameContinent() {
 		List<String> country = null;
 		String sql = "select distinct continent nameContinent from country";
-		country =getJdbcTemplate().queryForList(sql, String.class);	
+		country = getJdbcTemplate().queryForList(sql, String.class);
 		return country;
 	}
+
 	@Override
-	public List <Country> getNazioniByContinent(String ParContinent) { 
-			List<Country> country = null;
-			String sql = "select name nameNation, Code codNation, Continent nameContinent, population from country where continent=:continentparam";
-			MapSqlParameterSource params = new MapSqlParameterSource();
-			params.addValue("continentparam", ParContinent);
-			BeanPropertyRowMapper<Country> rm = new BeanPropertyRowMapper<Country>(Country.class);
-			country = getNamedParameterJdbcTemplate().query(sql, params, rm);	
-			return country;
-}
+	public List<Country> getNazioniByContinent(String ParContinent) {
+		List<Country> country = null;
+		String sql = "select name nameNation, Code codNation, Continent nameContinent, population from country where continent=:continentparam";
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("continentparam", ParContinent);
+		BeanPropertyRowMapper<Country> rm = new BeanPropertyRowMapper<Country>(Country.class);
+		country = getNamedParameterJdbcTemplate().query(sql, params, rm);
+		return country;
+	}
+
 	@Override
-	public List <Country> getAllNazioni(){
-		
+	public List<Country> getAllNazioni() {
+
 		String sql = "select Code codNation,Name nameNation, Population population,Continent nameContinent from country";
 		List<Country> country = null;
 		BeanPropertyRowMapper<Country> rm = new BeanPropertyRowMapper<Country>(Country.class);
-		country = getNamedParameterJdbcTemplate().query(sql, rm);	
+		country = getNamedParameterJdbcTemplate().query(sql, rm);
 		return country;
 	}
-}	
+}

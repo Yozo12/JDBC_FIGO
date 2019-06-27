@@ -34,7 +34,7 @@
 		class="it.objectmethod.springjdbc.main.dao.impl.CityDaoImpFigo">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"

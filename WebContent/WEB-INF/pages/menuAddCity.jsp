@@ -11,16 +11,15 @@
 </head>
 <body>
 	<form action="/SpringJDBC_FIGO/modifica-aggiungi">
-		NOME CITTA<input name="newCity" type="text" value="${cityName}" size="40" maxlength="200" /><br>
-		POPOLAZIONE<input name="newPopulation" type="text" value="${population}" size="40" maxlength="200" /><br>
-		 		
-		<select name="newCodNation">
+		NOME CITTA<input name="newCity" type="text" value="${cityName}"
+			size="40" maxlength="200" /><br> POPOLAZIONE<input
+			name="newPopulation" type="text" value="${population}" size="40"
+			maxlength="200" /><br> <select name="newCodNation">
 			<c:forEach items="${nazioni}" var="n">
 				<option value="${n.codNation}">${n.nameNation}</option>
 			</c:forEach>
-		</select> 
-         <input name="id" type="hidden" value="${citta.id}" >
-         <input value="Aggiungi" type="submit" > 
+		</select> <input name="id" type="hidden" value="${citta.id}"> <input
+			value="Aggiungi" type="submit">
 	</form>
 </body>
 </html>
