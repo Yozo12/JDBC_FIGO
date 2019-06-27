@@ -36,7 +36,7 @@
 					</thead>
 
 					<tbody>
-						<a href="/SpringJDBC_FIGO/allnazioni">Inserisci</a>
+						<a href="/SpringJDBC_FIGO/citta-load-edit?id=${citta[1].id }">Inserisci</a>
 						</p>
 						<c:forEach items="${citta}" var="c">
 							<tr>
@@ -46,7 +46,7 @@
 											formaction="/SpringJDBC_FIGO/delete"> <input
 											name="cityid" type="hidden" value="${c.id}"> <input
 											name="codNazione" type="hidden" value="${c.codNation}">
-										<a href="/SpringJDBC_FIGO/cittabyid?id=${c.id }">MODIFICA
+										<a href="/SpringJDBC_FIGO/citta-load-edit?id=${c.id }">MODIFICA
 										</a>
 									</form>
 								</td>

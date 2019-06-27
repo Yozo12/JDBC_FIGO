@@ -9,5 +9,4 @@ public interface ICountryDao {
 
 	public List<Country> getNazioniByContinent(String ParContinent);
 
-	public List<Country> getAllNazioni();
 }

@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 
 import it.objectmethod.springjdbc.main.dao.ICityDao;
 import it.objectmethod.springjdbc.main.model.City;
+import it.objectmethod.springjdbc.main.model.Country;
 
 public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICityDao {
 //	@Override
@@ -95,5 +96,15 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 		BeanPropertyRowMapper<City> rm = new BeanPropertyRowMapper<City>(City.class);
 		CityDao = getNamedParameterJdbcTemplate().query(qry, params, rm);
 		return CityDao;
+	}
+
+	@Override
+	public List<Country> getAllNazioni() {
+
+		String sql = "select Code codNation,Name nameNation, Population population,Continent nameContinent from country";
+		List<Country> country = null;
+		BeanPropertyRowMapper<Country> rm = new BeanPropertyRowMapper<Country>(Country.class);
+		country = getNamedParameterJdbcTemplate().query(sql, rm);
+		return country;
 	}
 }

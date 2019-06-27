@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.objectmethod.springjdbc.main.dao.ICityDao;
 import it.objectmethod.springjdbc.main.model.City;
+import it.objectmethod.springjdbc.main.model.Country;
 
 @Controller
 public class CityController {
@@ -31,14 +32,16 @@ public class CityController {
 	@RequestMapping("/delete")
 	public String Delete(@RequestParam("cityid") int cityid, @RequestParam("codNazione") String codNazione) {
 		CityDaoImp.deleteCity(cityid);
-		return "redirect:" + codNazione + "/citta";
+		return "forward:" + codNazione + "/citta";
 	}
 
-	@RequestMapping("/cittabyid")
+	@RequestMapping("/citta-load-edit")
 	public String cittaById(@RequestParam("id") int id, ModelMap model) {
+		List<Country> ListNazioni = CityDaoImp.getAllNazioni();
 		City cittabyid = CityDaoImp.cityById(id);
+		model.addAttribute("nazioni", ListNazioni);
 		model.addAttribute("citta", cittabyid);
-		return "menuModCity";
+		return "menuAddCity";
 
 	}
 
@@ -51,7 +54,7 @@ public class CityController {
 		} else if (id == "") {
 			CityDaoImp.addCity(newCity, newPopulation, newCodNation);
 		}
-		return "redirect:" + newCodNation + "/citta";
+		return "forward:" + newCodNation + "/citta";
 	}
 
 	@RequestMapping("/citta/ordina")

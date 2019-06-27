@@ -30,10 +30,5 @@ public class CountryController {
 		return "nationList";
 	}
 
-	@RequestMapping("/allnazioni")
-	public String AllNation(ModelMap model) {
-		List<Country> ListNazioni = countryDaoImp.getAllNazioni();
-		model.addAttribute("nazioni", ListNazioni);
-		return "menuAddCity";
-	}
+	
 }
