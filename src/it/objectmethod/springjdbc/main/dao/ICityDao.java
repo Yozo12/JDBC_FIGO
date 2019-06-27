@@ -10,7 +10,7 @@ public interface ICityDao {
 
 	public void deleteCity(int id);
 
-	public City cityById(int id);
+	public City cityById(String id);
 
 	public void modCity(String newName, String newPopulation, String newCodNation, String idCity);
 

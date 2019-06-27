@@ -42,7 +42,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 	}
 
 	@Override
-	public City cityById(int id) {
+	public City cityById(String id) {
 		City CityDao = null;
 		String sql = "select Name cityName,CountryCode codNation,population population,ID id from city where id=:id";
 		MapSqlParameterSource params = new MapSqlParameterSource();

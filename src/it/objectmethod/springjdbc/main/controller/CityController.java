@@ -20,12 +20,14 @@ public class CityController {
 
 	@RequestMapping("/{nazione}/citta")
 	public String NazioniByContinent(@PathVariable("nazione") String nazione, ModelMap model) {
+		
 		String AZ = "Alfabetico";
 		String POPA = "Popolazione Crescente";
 		List<City> cityList = CityDaoImp.getNameCitybyNation(nazione);
 		model.addAttribute("citta", cityList);
 		model.addAttribute("AZ", AZ);
 		model.addAttribute("POPA", POPA);
+		
 		return "cityList";
 	}
 
@@ -36,11 +38,18 @@ public class CityController {
 	}
 
 	@RequestMapping("/citta-load-edit")
-	public String cittaById(@RequestParam("id") int id, ModelMap model) {
-		List<Country> ListNazioni = CityDaoImp.getAllNazioni();
-		City cittabyid = CityDaoImp.cityById(id);
+	public String cittaLoad (@RequestParam("id") String id, ModelMap model) {
+		List<Country> ListNazioni=null;
+		City cittabyid=null;
+		if(id.equals("no")) {
+		 ListNazioni = CityDaoImp.getAllNazioni();
+		}else {
+		 cittabyid = CityDaoImp.cityById(id);
+		 ListNazioni = CityDaoImp.getAllNazioni();
+		}
 		model.addAttribute("nazioni", ListNazioni);
 		model.addAttribute("citta", cittabyid);
+		
 		return "menuAddCity";
 
 	}
