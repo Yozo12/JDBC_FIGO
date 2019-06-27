@@ -13,10 +13,21 @@
 	<form action="/SpringJDBC_FIGO/modifica-aggiungi">
 		NOME CITTA<input name="newCity" type="text" value="${citta.cityName}"
 			size="40" maxlength="200" /><br> POPOLAZIONE<input
-			name="newPopulation" type="text" value="${citta.population}" size="40"
-			maxlength="200" /><br> <select name="newCodNation">
+			name="newPopulation" type="text" value="${citta.population}"
+			size="40" maxlength="200" /><br> <select name="newCodNation">
 			<c:forEach items="${nazioni}" var="n">
-				<option  value="${n.codNation} ">${n.nameNation}</option>
+				<c:choose>
+					<c:when test="${citta.codNation== n.codNation}">
+						<option value="${n.codNation}" selected="selected">
+							<c:out value="${n.nameNation}" />
+						</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${n.codNation}">
+							<c:out value="${n.nameNation}" />
+						</option>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</select> <input name="id" type="hidden" value="${citta.id}"> <input
 			value="Aggiungi" type="submit">
