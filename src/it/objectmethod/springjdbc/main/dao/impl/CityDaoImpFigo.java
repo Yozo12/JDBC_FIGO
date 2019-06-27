@@ -12,7 +12,7 @@ import it.objectmethod.springjdbc.main.model.Country;
 import it.objectmethod.springjdbc.main.utils.Constants;
 
 public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICityDao {
-	Constants constant = new Constants();
+	
 
 //	@Override
 //	public Country getCountryByCode(String code) {
@@ -78,6 +78,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 
 	@Override
 	public List<City> getNameCitybyNationOrd(String codNazione, String ord) {
+		Constants constant = new Constants();
 		List<City> CityDao = null;
 		String parametro = null;
 		String qry = "select t1.ID id, t1.Name cityName, t1.CountryCode  codNation, t1.Population population from city t1 JOIN country t2 ON t1.countrycode=t2.Code  where t1.CountryCode=:parCode ";

@@ -17,7 +17,7 @@ import it.objectmethod.springjdbc.main.utils.Constants;
 
 @Controller
 public class CityController {
-	Constants constant = new Constants();
+	
 	@Autowired
 	private ICityDao CityDaoImp;
 
@@ -72,6 +72,7 @@ public class CityController {
 	@RequestMapping("/citta/ordina")
 	public String ordina(@RequestParam("codNazione") String codNazione, @RequestParam("ord") String ord,
 			ModelMap model) {
+		Constants constant = new Constants();
 		String AZ = constant.getAZ();
 		String POPA = constant.getPOPA();
 		if (ord.equals(constant.getAZ())) {
