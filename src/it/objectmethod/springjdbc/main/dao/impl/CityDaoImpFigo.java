@@ -49,7 +49,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 		return CityDao;
 	}
 	@Override 
-	public void ModCity(String newName, String newPopulation, String newCodNation, String idCity) {
+	public void modCity(String newName, String newPopulation, String newCodNation, String idCity) {
 	String sql="UPDATE city SET city.Name =:parName, city.population=:parPop, city.countryCode =:parCode where city.ID= :id";
 	MapSqlParameterSource params = new MapSqlParameterSource();
  	params.addValue("id", idCity);
@@ -59,7 +59,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
  	getNamedParameterJdbcTemplate().update(sql, params);	
 	}
 	@Override 
-	public void AddCity(String newName, String newPopulation, String newCodNation) {
+	public void addCity(String newName, String newPopulation, String newCodNation) {
 		String sql="INSERT INTO city(Name, population, CountryCode) VALUES ( :parName , :parPop , :parCode)";
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("parName", newName);

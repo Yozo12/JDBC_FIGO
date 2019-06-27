@@ -46,9 +46,9 @@ public class CityController {
 			@RequestParam("newCodNation") String newCodNation, @RequestParam("newCity") String newCity){
 	   
 		if(id!="") {
-		CityDaoImp.ModCity(newCity, newPopulation, newCodNation, id);
+		CityDaoImp.modCity(newCity, newPopulation, newCodNation, id);
 		}else if(id==""){
-			CityDaoImp.AddCity(newCity, newPopulation, newCodNation);
+			CityDaoImp.addCity(newCity, newPopulation, newCodNation);
 		}
 		return"redirect:" +newCodNation+ "/citta";
 }      
