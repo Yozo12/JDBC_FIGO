@@ -2,7 +2,6 @@ package it.objectmethod.springjdbc.main.controller;
 
 import java.util.List;
 
-import org.apache.tomcat.util.bcel.classfile.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,7 +22,7 @@ public class CityController {
 
 	@RequestMapping("/{nazione}/citta")
 	public String NazioniByContinent(@PathVariable("nazione") String nazione, ModelMap model) {
-
+		Constants constant = new Constants();
 		String AZ = constant.getAZ();
 		String POPA = constant.getPOPA();
 		List<City> cityList = CityDaoImp.getNameCitybyNation(nazione);
