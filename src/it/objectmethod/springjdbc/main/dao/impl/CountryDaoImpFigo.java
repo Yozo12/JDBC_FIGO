@@ -21,7 +21,7 @@ public class CountryDaoImpFigo extends NamedParameterJdbcDaoSupport implements I
 //		return country;
 //	}
 	@Override
-	public List<String> getNameContinent() {
+	public List<String> getContinentsName() {
 		List<String> country = null;
 		String sql = "select distinct continent nameContinent from country";
 		country = getJdbcTemplate().queryForList(sql, String.class);
@@ -29,7 +29,7 @@ public class CountryDaoImpFigo extends NamedParameterJdbcDaoSupport implements I
 	}
 
 	@Override
-	public List<Country> getNazioniByContinent(String ParContinent) {
+	public List<Country> getCountriesByContinent(String ParContinent) {
 		List<Country> country = null;
 		String sql = "select name nameNation, Code codNation, Continent nameContinent, population from country where continent=:continentparam";
 		MapSqlParameterSource params = new MapSqlParameterSource();

@@ -23,12 +23,12 @@ public class CityController {
 	@RequestMapping("/{nazione}/citta")
 	public String NazioniByContinent(@PathVariable("nazione") String nazione, ModelMap model) {
 
-		String AZ = Constants.AZ;
-		String POPA = Constants.POPA;
-		List<City> cityList = CityDaoImp.getNameCitybyNation(nazione);
+		
+		
+		List<City> cityList = CityDaoImp.getCitiesNamebyCountry(nazione);
 		model.addAttribute("citta", cityList);
-		model.addAttribute("AZ", AZ);
-		model.addAttribute("POPA", POPA);
+		model.addAttribute("AZ", Constants.AZ);
+		model.addAttribute("POPA", Constants.POPA);
 
 		return "cityList";
 	}
@@ -43,10 +43,10 @@ public class CityController {
 	public String cittaLoad(@RequestParam("id") int id, ModelMap model) {
 		List<Country> listNazioni = null;
 		City cittabyid = null;
-		listNazioni = CityDaoImp.getAllNazioni();
+		listNazioni = CityDaoImp.getAllCountries();
 		if (id > 0) {
 
-			cittabyid = CityDaoImp.cityById(id);
+			cittabyid = CityDaoImp.getCityById(id);
 
 		}
 		model.addAttribute("nazioni", listNazioni);
@@ -84,7 +84,7 @@ public class CityController {
 		} else {
 			POPA = Constants.POPA;
 		}
-		List<City> cityList = CityDaoImp.getNameCitybyNationOrd(codNazione, ord);
+		List<City> cityList = CityDaoImp.getCitiesNamebyCountryOrderBy(codNazione, ord);
 		model.addAttribute("citta", cityList);
 		model.addAttribute("AZ", AZ);
 		model.addAttribute("POPA", POPA);

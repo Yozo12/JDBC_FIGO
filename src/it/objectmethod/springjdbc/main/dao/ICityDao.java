@@ -6,17 +6,17 @@ import it.objectmethod.springjdbc.main.model.City;
 import it.objectmethod.springjdbc.main.model.Country;
 
 public interface ICityDao {
-	public List<City> getNameCitybyNation(String parNation);
+	public List<City> getCitiesNamebyCountry(String parNation);
 
 	public void deleteCity(int id);
 
-	public City cityById(int id);
+	public City  getCityById(int id);
 
 	public void modCity(String newName, String newPopulation, String newCodNation, String idCity);
 
 	public void addCity(String newName, String newPopulation, String newCodNation);
 
-	public List<City> getNameCitybyNationOrd(String codNazione, String ord);
+	public List<City> getCitiesNamebyCountryOrderBy(String codNazione, String ord);
 
-	public List<Country> getAllNazioni();
+	public List<Country> getAllCountries();
 }

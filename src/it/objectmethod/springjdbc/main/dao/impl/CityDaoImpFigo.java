@@ -25,7 +25,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 //		return country;
 //	}
 	@Override
-	public List<City> getNameCitybyNation(String parNation) {
+	public List<City> getCitiesNamebyCountry(String parNation) {
 		List<City> CityDao = null;
 		String sql = "select t1.ID id, t1.Name cityName, t1.CountryCode codNation, t1.Population population from city t1 JOIN country t2 ON t1.countrycode=t2.Code  where t1.CountryCode=:Codiceparam ";
 		MapSqlParameterSource params = new MapSqlParameterSource();
@@ -45,7 +45,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 	}
 
 	@Override
-	public City cityById(int id) {
+	public City getCityById(int id) {
 		City CityDao = null;
 		String sql = "select Name cityName,CountryCode codNation,population population,ID id from city where id=:id";
 		MapSqlParameterSource params = new MapSqlParameterSource();
@@ -77,7 +77,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 	}
 
 	@Override
-	public List<City> getNameCitybyNationOrd(String codNazione, String ord) {
+	public List<City> getCitiesNamebyCountryOrderBy(String codNazione, String ord) {
 		
 		List<City> CityDao = null;
 		String parametro = null;
@@ -103,7 +103,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 	}
 
 	@Override
-	public List<Country> getAllNazioni() {
+	public List<Country> getAllCountries() {
 
 		String sql = "select Code codNation,Name nameNation, Population population,Continent nameContinent from country";
 		List<Country> country = null;

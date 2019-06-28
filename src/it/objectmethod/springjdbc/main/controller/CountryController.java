@@ -18,14 +18,14 @@ public class CountryController {
 
 	@RequestMapping("/continent")
 	public String differentContinent(ModelMap model) {
-		List<String> ContinentList = countryDaoImp.getNameContinent();
+		List<String> ContinentList = countryDaoImp.getContinentsName();
 		model.addAttribute("continent", ContinentList);
 		return "continentList";
 	}
 
 	@RequestMapping("/{continent}/nazioni")
 	public String NazioniByContinent(@PathVariable("continent") String continent, ModelMap model) {
-		List<Country> nationList = countryDaoImp.getNazioniByContinent(continent);
+		List<Country> nationList = countryDaoImp.getCountriesByContinent(continent);
 		model.addAttribute("nazioni", nationList);
 		return "nationList";
 	}
