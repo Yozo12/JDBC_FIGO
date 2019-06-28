@@ -16,15 +16,15 @@ import it.objectmethod.springjdbc.main.utils.Constants;
 
 @Controller
 public class CityController {
-	
+
 	@Autowired
 	private ICityDao CityDaoImp;
 
 	@RequestMapping("/{nazione}/citta")
 	public String NazioniByContinent(@PathVariable("nazione") String nazione, ModelMap model) {
-		Constants constant = new Constants();
-		String AZ = constant.getAZ();
-		String POPA = constant.getPOPA();
+
+		String AZ = Constants.AZ;
+		String POPA = Constants.POPA;
 		List<City> cityList = CityDaoImp.getNameCitybyNation(nazione);
 		model.addAttribute("citta", cityList);
 		model.addAttribute("AZ", AZ);
@@ -40,16 +40,16 @@ public class CityController {
 	}
 
 	@RequestMapping("/citta-load-edit")
-	public String cittaLoad(@RequestParam("id") String id, ModelMap model) {
-		List<Country> ListNazioni = null;
+	public String cittaLoad(@RequestParam("id") int id, ModelMap model) {
+		List<Country> listNazioni = null;
 		City cittabyid = null;
-		if (id.equals("no")) {
-			ListNazioni = CityDaoImp.getAllNazioni();
-		} else {
+		listNazioni = CityDaoImp.getAllNazioni();
+		if (id > 0) {
+
 			cittabyid = CityDaoImp.cityById(id);
-			ListNazioni = CityDaoImp.getAllNazioni();
+
 		}
-		model.addAttribute("nazioni", ListNazioni);
+		model.addAttribute("nazioni", listNazioni);
 		model.addAttribute("citta", cittabyid);
 
 		return "menuAddCity";
@@ -71,18 +71,18 @@ public class CityController {
 	@RequestMapping("/citta/ordina")
 	public String ordina(@RequestParam("codNazione") String codNazione, @RequestParam("ord") String ord,
 			ModelMap model) {
-		Constants constant = new Constants();
-		String AZ = constant.getAZ();
-		String POPA = constant.getPOPA();
-		if (ord.equals(constant.getAZ())) {
-			AZ = constant.getZA();
+
+		String AZ = null;
+		String POPA = null;
+		if (ord.equals(Constants.AZ)) {
+			AZ = Constants.ZA;
 		} else {
-			AZ = constant.getAZ();
+			AZ = Constants.AZ;
 		}
-		if (ord.equals(constant.getPOPA())) {
-			POPA = constant.getPOPD();
+		if (ord.equals(Constants.POPA)) {
+			POPA = Constants.POPD;
 		} else {
-			POPA = constant.getPOPA();
+			POPA = Constants.POPA;
 		}
 		List<City> cityList = CityDaoImp.getNameCitybyNationOrd(codNazione, ord);
 		model.addAttribute("citta", cityList);

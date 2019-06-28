@@ -36,7 +36,7 @@
 					</thead>
 
 					<tbody>
-						<a href="/SpringJDBC_FIGO/citta-load-edit?id=no">Inserisci</a>
+						<a href="/SpringJDBC_FIGO/citta-load-edit?id=0">Inserisci</a>
 						</p>
 						<c:forEach items="${citta}" var="c">
 							<tr>

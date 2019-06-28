@@ -45,7 +45,7 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 	}
 
 	@Override
-	public City cityById(String id) {
+	public City cityById(int id) {
 		City CityDao = null;
 		String sql = "select Name cityName,CountryCode codNation,population population,ID id from city where id=:id";
 		MapSqlParameterSource params = new MapSqlParameterSource();
@@ -78,20 +78,20 @@ public class CityDaoImpFigo extends NamedParameterJdbcDaoSupport implements ICit
 
 	@Override
 	public List<City> getNameCitybyNationOrd(String codNazione, String ord) {
-		Constants constant = new Constants();
+		
 		List<City> CityDao = null;
 		String parametro = null;
 		String qry = "select t1.ID id, t1.Name cityName, t1.CountryCode  codNation, t1.Population population from city t1 JOIN country t2 ON t1.countrycode=t2.Code  where t1.CountryCode=:parCode ";
-		if (ord.equals(constant.getAZ())) {
+		if (ord.equals(Constants.AZ)) {
 			parametro = "order by cityName ASC";
 			qry = qry + parametro;
-		} else if (ord.equals(constant.getZA())) {
+		} else if (ord.equals(Constants.ZA)) {
 			parametro = "order by cityName DESC";
 			qry = qry + parametro;
-		} else if (ord.equals(constant.getPOPA())) {
+		} else if (ord.equals(Constants.POPA)) {
 			parametro = " order by population ASC";
 			qry = qry + parametro;
-		} else if (ord.equals(constant.getPOPD())) {
+		} else if (ord.equals(Constants.POPD)) {
 			parametro = " order by population DESC";
 			qry = qry + parametro;
 		}
